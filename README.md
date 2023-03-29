@@ -29,6 +29,7 @@
 
 #### 使用データ
 - `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`
+- コード表`https://github.com/shi-works/traffic-accident-converter/tree/main/code`
 
 #### 出力結果
 - `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_convert_v2.csv`

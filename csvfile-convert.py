@@ -3,41 +3,6 @@
 import pandas as pd
 import csv
 
-class HashTable:
-    def __init__(self, table_size=100):
-        # テーブルのサイズを引数で変更できるようにしてある
-        self.data = [[] for i in range(table_size)]
-        self.n = table_size
-
-    def get_hash(self, v):
-        # オブジェクトのハッシュ値を計算する
-        return hash(v) % self.n
-
-    def search(self, key):
-        # keyを使って値を探す
-        i = self.get_hash(key)
-        for j, v in enumerate(self.data[i]):
-            if v[0] == key:
-                return (i, j)
-        return (i, -1)
-
-    def set(self, key, value):
-        # データを格納するべき場所を探す
-        i, j = self.search(key)
-        if j != -1:
-            # すでにある値を書き換える
-            self.data[i][j][1] = value
-        else:
-            # 新たなデータとして付け加える
-            self.data[i].append([key, value])
-
-    def get(self, key):
-        i, j = self.search(key)
-        if j != -1:
-            return self.data[i][j][1]
-        # キーが見付からない場合はエラーを返す
-        raise KeyError(f'{key} was not found in this HashTable!')
-
 # 出力CSVファイルオープン
 output_csvfile = "./honhyo_2019-2021_convert_v2.csv"
 with open(output_csvfile, 'a', encoding='UTF-8') as f:
@@ -57,36 +22,63 @@ with open(output_csvfile, 'a', encoding='UTF-8') as f:
     data = pd.read_csv(
         "./honhyo_2019-2021_to-degree.csv", dtype=object).values.tolist()
 
-    # 02_都道府県コードをハッシュテーブルに読み込み
-    HtodouhukenTbl = HashTable()
-    list_1 = pd.read_csv("./code/2_koudohyou_todouhukenkoudo.csv",
-                         skiprows=4, usecols=[0, 1], dtype=object).values.tolist()
-    for i in range(len(list_1)):
-        HtodouhukenTbl.set(str(list_1[i][0]), list_1[i][1])
+    # 02_都道府県コードを辞書に読み込み
+    csv_file_todouhuken = "code/2_koudohyou_todouhukenkoudo.csv"
+    with open(csv_file_todouhuken, mode="r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+        # 5行のヘッダーをスキップ
+        for _ in range(5):
+            next(reader)
 
-    # 03_警察署等コードをハッシュテーブルに読み込み
-    HkeisatusyoTbl = HashTable()
-    list_2 = pd.read_csv("./code/3_koudohyou_keisatusyotoukoudo.csv",
-                         skiprows=4, usecols=[0, 1, 2, 3], dtype=object).values.tolist()
-    for i in range(len(list_2)):
-        HkeisatusyoTbl.set(
-            str(list_2[i][0]) + str(list_2[i][1]), list_2[i][3])
+        # 辞書にデータを追加
+        dict_todouhuken = {row[0]: row[1] for row in reader}
 
-    # 09_路線（高速自動車国道,自動車専用道（指定））コードをハッシュテーブルに読み込み
-    HrosenkousokuTbl = HashTable()
-    list_3 = pd.read_csv("./code/9_koudohyou_rosen_kousokujidousya_jidousyasenyou.csv",
-                         skiprows=4, usecols=[0, 1, 2, 3], dtype=object).values.tolist()
-    for i in range(len(list_3)):
-        HrosenkousokuTbl.set(
-            str(list_3[i][0]) + str(list_3[i][1]), list_3[i][3])
+    print('--- 2_koudohyou_todouhukenkoudo.csv ---')
+    print(dict_todouhuken)
 
-    # 35_車両の衝突部位コードをハッシュテーブルに読み込み
+    # 03_警察署等コードを辞書に読み込み
+    csv_file_keisatusyo = "code/3_koudohyou_keisatusyotoukoudo.csv"
+    with open(csv_file_keisatusyo, mode="r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+        # 5行のヘッダーをスキップ
+        for _ in range(5):
+            next(reader)
+
+        # 辞書にデータを追加
+        dict_keisatusyo = {
+            row[0] + row[1]: row[3] for row in reader}
+
+    print('--- 3_koudohyou_keisatusyotoukoudo.csv ---')
+    print(dict_keisatusyo)
+
+    # 09_路線（高速自動車国道,自動車専用道（指定））コードを辞書に読み込み
+    csv_file_rosenkousoku = "code/9_koudohyou_rosen_kousokujidousya_jidousyasenyou.csv"
+    with open(csv_file_rosenkousoku, mode="r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+        # 5行のヘッダーをスキップ
+        for _ in range(5):
+            next(reader)
+
+        # 辞書にデータを追加
+        dict_rosenkousoku = {
+            row[0] + row[1]: row[3] for row in reader}
+
+    print('--- 9_koudohyou_rosen_kousokujidousya_jidousyasenyou.csv ---')
+    print(dict_rosenkousoku)
+
+    # 35_車両の衝突部位コードを辞書に読み込み
     # 当該データはCode for FUKUIが作成したコード値表（https://github.com/code4fukui/traffic-accident）を使用
-    HsyaryounosyoutotubuiTbl = HashTable()
-    list_4 = pd.read_csv("./code/hit.csv",
-                         skiprows=0, usecols=[0, 1], dtype=object).values.tolist()
-    for i in range(len(list_4)):
-        HsyaryounosyoutotubuiTbl.set(str(list_4[i][0]), str(list_4[i][1]))
+    csv_file_syaryounosyoutotubui = "code/hit.csv"
+    with open(csv_file_syaryounosyoutotubui, mode="r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+        # 1行のヘッダーをスキップ
+        next(reader)
+
+        # 辞書にデータを追加
+        dict_syaryounosyoutotubui = {row[0]: row[1] for row in reader}
+
+    print('--- hit.csv ---')
+    print(dict_syaryounosyoutotubui)
 
     # print(HsyaryounosyoutotubuiTbl.get('88'))
     # print('-')
@@ -604,7 +596,9 @@ with open(output_csvfile, 'a', encoding='UTF-8') as f:
         res_siryoukubun = siryoukubun(int(data[i][0]))
 
         # 都道府県名
-        res_todouhuken = HtodouhukenTbl.get(data[i][1])
+        # res_todouhuken = HtodouhukenTbl.get(data[i][1])
+        if data[i][1] in dict_todouhuken:
+            res_todouhuken = dict_todouhuken[data[i][1]]
 
         # 事故内容
         res_jikonaiyou = jikonaiyou(int(data[i][4]))
@@ -614,15 +608,19 @@ with open(output_csvfile, 'a', encoding='UTF-8') as f:
         int_rosenkoudo = int(str_rosenkoudo[0:4])  # 上4桁
         res_rosenkoudo = rosenkoudo(int_rosenkoudo)
         if res_rosenkoudo == '高速自動車国道 *1' or res_rosenkoudo == '自動車専用道－指定 *1':
-            # 高速道路の場合、HrosenkousokuTblから路線名を取得
-            res_rosenkoudo = HrosenkousokuTbl.get(
-                str(data[i][1]) + str(str_rosenkoudo[0:4]))  # 上4桁
+            # 高速道路の場合、dict_rosenkousokuから路線名を取得
+            # res_rosenkoudo = HrosenkousokuTbl.get(str(data[i][1]) + str(str_rosenkoudo[0:4]))  # 上4桁
+            if str(data[i][1]) + str(str_rosenkoudo[0:4]) in dict_rosenkousoku:
+                res_rosenkoudo = dict_rosenkousoku[str(
+                    data[i][1]) + str(str_rosenkoudo[0:4])]
         elif res_rosenkoudo == '一般国道（国道番号）':
             # 一般国道の場合、路線コードから路線番号を付与
             res_rosenkoudo = '一般国道' + str(int(str_rosenkoudo[0:4])) + "号"
 
         # 警察署等名
-        res_keisatusyo = HkeisatusyoTbl.get(str(data[i][1]) + str(data[i][2]))
+        # res_keisatusyo = HkeisatusyoTbl.get(str(data[i][1]) + str(data[i][2]))
+        if str(data[i][1]) + str(data[i][2]) in dict_keisatusyo:
+            res_keisatusyo = dict_keisatusyo[str(data[i][1]) + str(data[i][2])]
 
         # 上下線
         res_jyougesen = jyougesen(int(data[i][8]))
@@ -715,12 +713,16 @@ with open(output_csvfile, 'a', encoding='UTF-8') as f:
         res_sokudokisei_siteinomi_b = sokudokisei_siteinomi(str(data[i][43]))
 
         # 車両の衝突部位（当事者A）
-        res_syaryounosyoutotubui_a = HsyaryounosyoutotubuiTbl.get(
-            str(data[i][44]))
+        # res_syaryounosyoutotubui_a = HsyaryounosyoutotubuiTbl.get(str(data[i][44]))
+        if str(data[i][44]) in dict_syaryounosyoutotubui:
+            res_syaryounosyoutotubui_a = dict_syaryounosyoutotubui[str(
+                data[i][44])]
 
         # 車両の衝突部位（当事者B）
-        res_syaryounosyoutotubui_b = HsyaryounosyoutotubuiTbl.get(
-            str(data[i][45]))
+        # res_syaryounosyoutotubui_b = HsyaryounosyoutotubuiTbl.get(str(data[i][45]))
+        if str(data[i][45]) in dict_syaryounosyoutotubui:
+            res_syaryounosyoutotubui_b = dict_syaryounosyoutotubui[str(
+                data[i][45])]
 
         # 車両の損壊程度（当事者A）
         res_syaryounosonkaiteido_a = syaryounosonkaiteido(str(data[i][46]))

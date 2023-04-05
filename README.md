@@ -8,31 +8,31 @@
 - 本票CSVファイル（2019年、2020年、2021年）をマージするプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2019.csv`
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2020.csv`
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2021.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2019.csv`,66.5MB
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2020.csv`,54.0MB
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2021.csv`,53.3MB
 
 #### 出力結果
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`,173.8MB
 
 ### csvfile-to-degree.py
 - マージした本票CSVファイル（2019～2021年）の「地点　緯度（北緯）」と「地点　経度（東経）」を十進法度単位に変換するプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`,173.8MB
 
 #### 出力結果
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  
 
 ### csvfile-convert.py
 - 十進法度単位に変換した本票CSVファイル（2019～2021年）をコード表を元に読みやすいデータに変換するプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  
 - コード表`https://github.com/shi-works/traffic-accident-converter/tree/main/code`
 
 #### 出力結果
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_convert_v2.csv`
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_convert_v2.csv`,722.4MB  
 
 ### 使用データ及び出力結果のライセンスについて
 本データセットは[CC-BY-4.0](https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/LICENSE)で提供されます。使用の際には本レポジトリへのリンクを提示してください。

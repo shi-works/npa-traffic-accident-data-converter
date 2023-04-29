@@ -32,7 +32,10 @@
 - コード表`https://github.com/shi-works/traffic-accident-converter/tree/main/code`
 
 #### 出力結果
+##### csv形式
 - `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_convert_v2.csv`,722.4MB  
+##### FlatGeobuf形式
+- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_convert_v2.fgb`,1.1GB
 
 ### 使用データ及び出力結果のライセンスについて
 本データセットは[CC-BY-4.0](https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/LICENSE)で提供されます。使用の際には本レポジトリへのリンクを提示してください。

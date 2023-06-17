@@ -8,9 +8,9 @@
 - 本票CSVファイル（2019年、2020年、2021年）をマージするプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2019.csv`,66.5MB
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2020.csv`,54.0MB
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/data/honhyo_2021.csv`,53.3MB
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/data/honhyo_2019.csv`,66.5MB
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/data/honhyo_2020.csv`,54.0MB
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/data/honhyo_2021.csv`,53.3MB
 
 #### 出力結果
 - `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`,173.8MB

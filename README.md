@@ -13,13 +13,13 @@
 - `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/data/honhyo_2021.csv`,53.3MB
 
 #### 出力結果
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`,173.8MB
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/honhyo_2019-2021.csv`,173.8MB
 
 ### csvfile-to-degree.py
 - マージした本票CSVファイル（2019～2021年）の「地点　緯度（北緯）」と「地点　経度（東経）」を十進法度単位に変換するプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021.csv`,173.8MB
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/honhyo_2019-2021.csv`,173.8MB
 
 #### 出力結果
 - `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  

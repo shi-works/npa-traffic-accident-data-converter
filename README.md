@@ -28,7 +28,7 @@
 - 十進法度単位に変換した本票CSVファイル（2019～2021年）をコード表を元に読みやすいデータに変換するプログラムになります。
 
 #### 使用データ
-- `https://pmtiles-data.s3.ap-northeast-1.amazonaws.com/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  
+- `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  
 - コード表`https://github.com/shi-works/traffic-accident-converter/tree/main/code`
 
 #### 出力結果

@@ -1,4 +1,4 @@
-# traffic-accident-data-converter
+# npa-traffic-accident-data-converter
 - 本プログラムは、警察庁が公開している、[交通事故統計情報のオープンデータ（2019年、2020年、2021年）の本票](https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html)を[コード表](https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html)を元に読みやすいデータ（GISデータ）に変換するプログラムになります。
 - Pythonで構築
 

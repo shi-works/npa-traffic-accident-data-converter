@@ -6,6 +6,7 @@
 
 ### csvfile-merge.py
 - 本票CSVファイル（2019年、2020年、2021年）をマージするプログラムになります。
+- 文字コードをUTF-8に変換します。
 
 #### 使用データ
 - `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/data/honhyo_2019.csv`,66.5MB

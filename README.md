@@ -32,6 +32,8 @@
 - `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/honhyo_2019-2021_to-degree.csv`,207.4MB  
 - コード表`https://github.com/shi-works/traffic-accident-converter/tree/main/code`
 
+hit.csv is based on https://github.com/code4fukui/traffic-accident Thanks!
+
 #### 出力結果
 ##### csv形式
 - `https://xs489works.xsrv.jp/pmtiles-data/traffic-accident/honhyo_2019-2021_convert_v2.csv`,722.4MB  
